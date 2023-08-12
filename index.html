@@ -142,6 +142,7 @@
 							<p>We can help to answer all you question. Let's build something great together.</p>
 							<div class="split style1">
 								<section>
+									<!--
 									<form method="post" action="#">
 										<div class="fields">
 											<div class="field half">
@@ -160,6 +161,26 @@
 										<ul class="actions">
 											<li><a href="#" class="button submit">Send Message</a></li>
 										</ul>
+									</form>
+									-->
+									<form method="post" autocomplete="on" name="google-sheet">
+										<div class="fields">
+											<div class="field half">
+												<label for="name">Name</label>
+												<input type="text" name="Name" />
+											</div>
+											<div class="field half">
+												<label for="email">Email</label>
+												<input type="text" name="Email" />
+											</div>
+											<div class="field">
+												<label for="message">Message</label>
+												<textarea name="Message" rows="5"></textarea>
+											</div>
+											<div class="field">
+												<input type="submit" name="submit" value="Send Message"/>
+											</div>											
+										</div>
 									</form>
 								</section>
 								<section>
@@ -204,7 +225,20 @@
 			</footer>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
+		<script>
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxqyo6NQPl38pyFcOFEyacHcAhuC6g4x8YnQO5w5NlDAYun8JNjT0d63gJ2fD-DMUNO7Q/exec'
+            const form = document.forms['google-sheet']
+          
+            form.addEventListener('submit', e => {
+              e.preventDefault()
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+                //.then(response => {window.location.href='thank-you.html'})
+                .catch(error => console.error('Error!', error.message))
+            })
+		</script>
+			<script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+<!--			<script src="assets/js/jquery.min.js"></script>-->
 			<script src="assets/js/jquery.scrollex.min.js"></script>
 			<script src="assets/js/jquery.scrolly.min.js"></script>
 			<script src="assets/js/browser.min.js"></script>
